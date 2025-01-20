@@ -27,30 +27,7 @@ struct ContentView: View {
                     NavigationLink {
                         LootDetailView(item: item) // Passer l'item à la vue de détail
                     } label: {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                // Rareté en point de couleur
-                                HStack {
-                                    Circle()
-                                        .fill(item.rarity.color)
-                                        .frame(width: 10, height: 10)
-                                    Text(item.name)
-                                        .fontWeight(.bold)
-                                }
-
-                                // Quantité sous le nom de l'objet
-                                Text("Quantité: \(item.quantity)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-                            Spacer()
-
-                            // Emoji du type de l'item en haut à droite
-                            Text(item.type.rawValue)
-                                .font(.title)
-                                .frame(width: 30, height: 30)
-                        }
-                        .padding()
+                        ExtractedView(item: item)
                     }
                 }
             }

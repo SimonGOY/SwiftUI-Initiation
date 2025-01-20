@@ -18,6 +18,7 @@
 		2ED3E0262D3E4F27000C1021 /* LootItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3E0252D3E4F27000C1021 /* LootItem.swift */; };
 		2ED3E0282D3E51AE000C1021 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3E0272D3E51AE000C1021 /* Game.swift */; };
 		2ED3E02C2D3E72F5000C1021 /* LootDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3E02B2D3E72F5000C1021 /* LootDetailView.swift */; };
+		2ED3E02E2D3E9DC4000C1021 /* LootRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3E02D2D3E9DC4000C1021 /* LootRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		2ED3E0252D3E4F27000C1021 /* LootItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootItem.swift; sourceTree = "<group>"; };
 		2ED3E0272D3E51AE000C1021 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		2ED3E02B2D3E72F5000C1021 /* LootDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailView.swift; sourceTree = "<group>"; };
+		2ED3E02D2D3E9DC4000C1021 /* LootRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				2ED3DFF82D3E3A63000C1021 /* SwiftUI_InitiationApp.swift */,
 				2ED3DFFA2D3E3A63000C1021 /* ContentView.swift */,
+				2ED3E02D2D3E9DC4000C1021 /* LootRow.swift */,
 				2ED3E0232D3E43F3000C1021 /* AddItemView.swift */,
 				2ED3E0252D3E4F27000C1021 /* LootItem.swift */,
 				2ED3E02B2D3E72F5000C1021 /* LootDetailView.swift */,
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ED3DFFB2D3E3A63000C1021 /* ContentView.swift in Sources */,
+				2ED3E02E2D3E9DC4000C1021 /* LootRow.swift in Sources */,
 				2ED3E0282D3E51AE000C1021 /* Game.swift in Sources */,
 				2ED3E0242D3E43F3000C1021 /* AddItemView.swift in Sources */,
 				2ED3E02C2D3E72F5000C1021 /* LootDetailView.swift in Sources */,

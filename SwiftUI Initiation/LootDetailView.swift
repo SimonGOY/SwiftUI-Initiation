@@ -10,6 +10,8 @@ import SwiftUI
 struct LootDetailView: View {
     var item: LootItem
     @Environment(\.presentationMode) var presentationMode
+    @State private var isAnimating = false
+    @State private var shadowRadius: CGFloat = 0
     
     var body: some View {
         ScrollView {
@@ -20,13 +22,22 @@ struct LootDetailView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 24)
                             .fill(item.rarity.color)
-                            .frame(width: 160, height: 160)
-                            .shadow(color: item.rarity.color.opacity(0.7), radius: 40, x: 0, y: 0)
+                            .frame(width: 100, height: 100)
+                            .shadow(
+                                color: item.rarity.color.opacity(0.8),
+                                radius: shadowRadius,
+                                x: 0,
+                                y: 0
+                            )
                         
                         Text(item.type.rawValue)
-                            .font(.system(size: 60))
+                            .font(.system(size: 50))
                             .foregroundColor(.white)
                     }
+                    .rotation3DEffect(
+                        .degrees(isAnimating ? 360 : 0),
+                        axis: (x: 1.0, y: 0.5, z: 0.0)
+                    )
                     
                     // Nom de l'item
                     Text(item.name)
@@ -152,6 +163,22 @@ struct LootDetailView: View {
             }
             .foregroundColor(.blue)
         })
+        .onAppear {
+            // Délai initial de 0.4 secondes
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                // Animation de rotation
+                withAnimation(.spring(duration: 0.6)) {
+                    isAnimating = true
+                }
+                
+                // Animation de l'ombre avec délai de 0.2 secondes
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation(.bouncy(duration: 0.4)) {
+                        shadowRadius = 100.0
+                    }
+                }
+            }
+        }
     }
     
     // Placeholder View
@@ -178,10 +205,10 @@ struct LootDetailView_Previews: PreviewProvider {
         LootDetailView(item: LootItem(
             quantity: 2,
             name: "Épée Légendaire",
-            type: .poison,
-            rarity: .legendary,
-            attackStrength: 0,
-            game: Game(name: "Elden Ring", genre: .rpg, coverName: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.webp") // Exemple avec une URL d'image
+            type: .dagger,
+            rarity: .rare,
+            attackStrength: 4,
+            game: Game(name: "Elden Ring", genre: .rpg, coverName: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.webp")
         ))
     }
 }
