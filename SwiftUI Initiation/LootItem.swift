@@ -45,7 +45,7 @@ enum Rarity: String, CaseIterable, Identifiable {
 }
 
 // Structure représentant un item de loot
-struct LootItem {
+struct LootItem: Identifiable {
     var id = UUID()
     var quantity: Int = 1
     var name: String
