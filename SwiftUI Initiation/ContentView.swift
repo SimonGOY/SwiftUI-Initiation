@@ -8,22 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var loot = ["Epée", "Bouclier", "Armure"]
-
-    func addLoot() {
-        loot.append("Magie de feu")
-    }
+    @State private var loot = ["Epée", "Bouclier", "Armure"]
+    @State private var showAddItemView = false // Variable pour gérer l'affichage de AddItemView
 
     var body: some View {
-        List {
-            Button(action: {
-                addLoot()
-            }, label: {
-                Text("Ajouter")
-            })
-
-            ForEach(loot, id: \.self) { item in
-                Text(item)
+        NavigationStack {
+            List {
+                ForEach(loot, id: \.self) { item in
+                    Text(item)
+                }
+            }
+            .navigationTitle("Loot")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) { // Bouton en haut à droite
+                    Button(action: {
+                        showAddItemView.toggle() // Basculer l'affichage de la vue
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title2)
+                    }
+                }
+            }
+            .sheet(isPresented: $showAddItemView) { // Affichage modale
+                AddItemView()
             }
         }
     }
