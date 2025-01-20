@@ -7,14 +7,28 @@
 
 import SwiftUI
 
+class Inventory {
+    var loot = ["Epée", "Bouclier", "Armure"]
+    
+    func addItem(item: String) {
+        loot.append(item)
+    }
+}
+
 struct ContentView: View {
-    @State private var loot = ["Epée", "Bouclier", "Armure"]
-    @State private var showAddItemView = false // Variable pour gérer l'affichage de AddItemView
+    var inventory = Inventory()
+        
+    @State var showAddItemView = false
 
     var body: some View {
         NavigationStack {
             List {
-                ForEach(loot, id: \.self) { item in
+                Button(action: {
+                    inventory.addItem(item: "Magie de feu")
+                }, label: {
+                    Text("Ajouter")
+                })
+                ForEach(inventory.loot, id: \.self) { item in
                     Text(item)
                 }
             }

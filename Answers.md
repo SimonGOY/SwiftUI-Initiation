@@ -19,3 +19,9 @@ Il manque un identifiant pour pouvoir utiliser la fonction List. (les string ne 
 - Le code ne fonctionne pas car "loot" est déclaré comme une constante et est donc immuable. En Swift les modifications locales ne sont pas reflétées dans l'interface utilisateur par défaut.
 
 - Cela fonctione maintenant car le @State indique à SwfitUI de mettre à jour l'interface lors de la modification de la variable.
+
+## 4 - Ajout Item 
+
+### Exercice 1
+
+- Il ne se passe rien sur l'interface. L'objet est bien ajouté à la liste mais elle n'est pas observée, l'interface n'est donc pas mise à jour quand la liste est modifiée.
