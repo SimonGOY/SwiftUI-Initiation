@@ -44,6 +44,7 @@
 		2ED3E00F2D3E3A65000C1021 /* SwiftUI InitiationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI InitiationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED3E0132D3E3A65000C1021 /* SwiftUI_InitiationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_InitiationUITests.swift; sourceTree = "<group>"; };
 		2ED3E0152D3E3A65000C1021 /* SwiftUI_InitiationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_InitiationUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2ED3E0222D3E3BF2000C1021 /* Answers.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Answers.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		2ED3DFEC2D3E3A63000C1021 = {
 			isa = PBXGroup;
 			children = (
+				2ED3E0222D3E3BF2000C1021 /* Answers.md */,
 				2ED3DFF72D3E3A63000C1021 /* SwiftUI Initiation */,
 				2ED3E0082D3E3A65000C1021 /* SwiftUI InitiationTests */,
 				2ED3E0122D3E3A65000C1021 /* SwiftUI InitiationUITests */,
