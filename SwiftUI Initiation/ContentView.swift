@@ -45,6 +45,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showAddItemView) { // Affichage modale
                 AddItemView()
+                    .environmentObject(inventory)
             }
         }
     }

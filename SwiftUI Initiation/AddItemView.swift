@@ -14,35 +14,50 @@ enum Rarity: String, CaseIterable, Identifiable {
 }
 
 struct AddItemView: View {
-    @State private var name: String = "" // Nom de l'objet (vide par défaut)
-    @State private var rarity: Rarity = .common // Rareté par défaut
+    @EnvironmentObject var inventory: Inventory // Accès à l'inventaire partagé
+    @Environment(\.dismiss) var dismiss // Méthode pour fermer la vue
+    @State private var name = "" // Nom de l'objet à ajouter
+    @State private var rarity: Rarity = .common // Rareté de l'objet
 
     var body: some View {
-        Form {
-            Section(header: Text("Nouvel objet")) {
-                TextField("Nom de l'objet", text: $name)
+        NavigationStack {
+            Form {
+                Section {
+                    TextField("Nom de l'objet", text: $name) // Saisie du nom
+                    Picker("Rareté", selection: $rarity) {
+                        ForEach(Rarity.allCases, id: \.self) { rarity in
+                            Text(rarity.rawValue.capitalized)
+                        }
+                    }
+                }
 
-                Picker("Rareté", selection: $rarity) {
-                    ForEach(Rarity.allCases) { rarity in
-                        Text(rarity.rawValue.capitalized)
+                Button(action: {
+                    if !name.isEmpty {
+                        inventory.addItem(item: name) // Ajout de l'item à l'inventaire
+                        dismiss() // Fermeture de la vue
+                    }
+                }) {
+                    Text("Ajouter")
+                }
+            }
+            .navigationTitle("Ajouter un objet")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Ajouter") {
+                        if !name.isEmpty {
+                            inventory.addItem(item: name) // Ajout de l'item et fermeture de la vue
+                            dismiss() // Ferme la vue après l'ajout
+                        }
                     }
                 }
             }
-
-            Section {
-                Button(action: {
-                }) {
-                    Text("Ajouter")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-            }
         }
-        .navigationTitle("Ajouter un item")
     }
 }
 
 struct AddItemView_Previews: PreviewProvider {
     static var previews: some View {
         AddItemView()
+            .environmentObject(Inventory())
     }
 }
