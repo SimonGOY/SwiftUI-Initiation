@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    var loot = ["Epée", "Bouclier", "Armure"]
+    @State var loot = ["Epée", "Bouclier", "Armure"]
 
     func addLoot() {
         loot.append("Magie de feu")
@@ -34,3 +34,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+    
