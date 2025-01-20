@@ -39,6 +39,7 @@ struct AddItemView: View {
                                 .tag(game)  // Utilisation du jeu complet comme tag
                         }
                     }
+                    Stepper("Quantité: \(quantity)", value: $quantity, in: 0...100)
                 }
 
                 Section {
