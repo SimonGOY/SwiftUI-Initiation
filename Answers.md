@@ -25,3 +25,4 @@ Il manque un identifiant pour pouvoir utiliser la fonction List. (les string ne 
 ### Exercice 1
 
 - Il ne se passe rien sur l'interface. L'objet est bien ajouté à la liste mais elle n'est pas observée, l'interface n'est donc pas mise à jour quand la liste est modifiée.
+

@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-class Inventory {
-    var loot = ["Epée", "Bouclier", "Armure"]
+class Inventory: ObservableObject {
+    @Published var loot = ["Epée", "Bouclier", "Armure"]
     
     func addItem(item: String) {
         loot.append(item)
@@ -16,7 +16,7 @@ class Inventory {
 }
 
 struct ContentView: View {
-    var inventory = Inventory()
+    @StateObject var inventory = Inventory()
         
     @State var showAddItemView = false
 
