@@ -8,42 +8,64 @@
 import SwiftUI
 
 class Inventory: ObservableObject {
-    @Published var loot = ["Epée", "Bouclier", "Armure"]
+    @Published var loot: [LootItem] = []  // L'inventaire contenant des LootItem
     
-    func addItem(item: String) {
+    func addItem(item: LootItem) {
         loot.append(item)
     }
 }
 
 struct ContentView: View {
     @StateObject var inventory = Inventory()
-        
-    @State var showAddItemView = false
+    @State private var showAddItemView = false
 
     var body: some View {
         NavigationStack {
             List {
-                Button(action: {
-                    inventory.addItem(item: "Magie de feu")
-                }, label: {
-                    Text("Ajouter")
-                })
-                ForEach(inventory.loot, id: \.self) { item in
-                    Text(item)
+                
+                ForEach(inventory.loot, id: \.id) { item in
+                    NavigationLink {
+                        LootDetailView(item: item) // Passer l'item à la vue de détail
+                    } label: {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                // Rareté en point de couleur
+                                HStack {
+                                    Circle()
+                                        .fill(item.rarity.color)
+                                        .frame(width: 10, height: 10)
+                                    Text(item.name)
+                                        .fontWeight(.bold)
+                                }
+
+                                // Quantité sous le nom de l'objet
+                                Text("Quantité: \(item.quantity)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+
+                            // Emoji du type de l'item en haut à droite
+                            Text(item.type.rawValue)
+                                .font(.title)
+                                .frame(width: 30, height: 30)
+                        }
+                        .padding()
+                    }
                 }
             }
-            .navigationTitle("Loot")
+            .navigationTitle("Inventaire")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) { // Bouton en haut à droite
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        showAddItemView.toggle() // Basculer l'affichage de la vue
+                        showAddItemView.toggle()
                     }) {
                         Image(systemName: "plus.circle.fill")
                             .font(.title2)
                     }
                 }
             }
-            .sheet(isPresented: $showAddItemView) { // Affichage modale
+            .sheet(isPresented: $showAddItemView) {
                 AddItemView()
                     .environmentObject(inventory)
             }
@@ -56,4 +78,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-    
